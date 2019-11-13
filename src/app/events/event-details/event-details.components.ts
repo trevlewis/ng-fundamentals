@@ -5,18 +5,31 @@ import { ISession } from '../shared';
 
 @Component({
   templateUrl: './event-details.component.html',
-  styles: [`
-    .container { padding-left:20px; padding-right: 20px; }
-    .event-image { height: 100px; }
-    a { cursor: pointer; }
-  `]
+  styles: [
+    `
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .event-image {
+        height: 100px;
+      }
+      a {
+        cursor: pointer;
+      }
+    `
+  ]
 })
-
 export class EventDetailsComponent implements OnInit {
   event: any;
   addMode: boolean;
+  filterBy = 'all';
+  sortBy = 'votes';
 
-  constructor(private eventService: EventService, private route: ActivatedRoute) {}
+  constructor(
+    private eventService: EventService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.event = this.eventService.getEvent(+this.route.snapshot.params.id);
@@ -35,6 +48,10 @@ export class EventDetailsComponent implements OnInit {
     session.id = nextId + 1;
     this.event.sessions.push(session);
     this.eventService.updateEvent(this.event);
+    this.addMode = false;
+  }
+
+  cancelAddSession() {
     this.addMode = false;
   }
 }
