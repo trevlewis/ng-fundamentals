@@ -22,7 +22,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EventsListComponent implements OnInit {
   events: any;
 
-  constructor(private eventService: EventService, private toastr: ToastrService, private route: ActivatedRoute) {}
+  constructor(private eventService: EventService,
+              private toastr: ToastrService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.events = this.route.snapshot.data.events;

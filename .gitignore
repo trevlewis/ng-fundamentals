@@ -17,6 +17,7 @@ speed-measure-plugin.json
 package-lock.json
 
 # IDEs and editors
+.vscode
 /.idea
 .project
 .classpath
