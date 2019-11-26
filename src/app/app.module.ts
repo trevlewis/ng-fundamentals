@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import {
   EventsListComponent,
   EventThumbnailComponent,
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   UpvoteComponent,
   DurationPipe,
   VoterService,
-  LocationValidator
+  LocationValidator,
+  EventResolver
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -30,15 +30,22 @@ import {
   Toastr,
   CollapsibleWellComponent,
   JQ_TOKEN,
-  SimpleModalComponent,
-  ModalTriggerDirective
+  SimpleModalComponent
 } from './common/index';
 
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$'];
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
+
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
+  ],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -60,10 +67,10 @@ let jQuery = window['$'];
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
     EventListResolver,
     AuthService,
     VoterService,
+    EventResolver,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
@@ -75,7 +82,9 @@ export class AppModule {}
 
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
-    return window.confirm('You have not saved this event, do you really want to cancel?');
+    return window.confirm(
+      'You have not saved this event, do you really want to cancel?'
+    );
   }
   return true;
 }
