@@ -1,8 +1,8 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { IEvent, ISession } from './event.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { IEvent, ISession } from './event.model';
 
 @Injectable()
 export class EventService {

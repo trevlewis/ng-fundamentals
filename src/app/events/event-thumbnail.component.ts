@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'event-thumbnail',
@@ -12,7 +12,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         <span *ngSwitchCase="'10:00 am'"> (Late Start)</span>
         <span *ngSwitchDefault> (Normal Start)</span>
       </div>
-      <div>Price: {{ event?.price | currency:'USD' }}</div>
+      <div>Price: {{ event?.price | currency: 'USD' }}</div>
       <div *ngIf="event?.location">
         <span>Location: {{ event?.location?.address }}</span>
         <span class="pad-left"

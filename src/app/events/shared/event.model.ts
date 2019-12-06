@@ -6,9 +6,9 @@ export interface IEvent {
   price: number;
   imageUrl: string;
   location?: {
-    address: string
-    city: string
-    country: string
+    address: string;
+    city: string;
+    country: string;
   };
   onlineUrl?: string;
   sessions: ISession[];

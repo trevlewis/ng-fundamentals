@@ -1,39 +1,36 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import {
-  EventsListComponent,
-  EventThumbnailComponent,
-  EventService,
-  EventDetailsComponent,
-  CreateEventComponent,
-  EventListResolver,
-  CreateSessionComponent,
-  SessionListComponent,
-  UpvoteComponent,
-  DurationPipe,
-  VoterService,
-  LocationValidator,
-  EventResolver
-} from './events/index';
-
-import { EventsAppComponent } from './events-app.component';
-import { NavBarComponent } from './nav/navbar.component';
-import { appRoutes } from './routes';
-import { Error404Component } from './errors/404.component';
-import { AuthService } from './user/auth.service';
-
-import {
-  TOASTR_TOKEN,
-  Toastr,
   CollapsibleWellComponent,
   JQ_TOKEN,
-  SimpleModalComponent
+  SimpleModalComponent,
+  Toastr,
+  TOASTR_TOKEN
 } from './common/index';
-
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { Error404Component } from './errors/404.component';
+import { EventsAppComponent } from './events-app.component';
+import {
+  CreateEventComponent,
+  CreateSessionComponent,
+  DurationPipe,
+  EventDetailsComponent,
+  EventListResolver,
+  EventResolver,
+  EventService,
+  EventsListComponent,
+  EventThumbnailComponent,
+  LocationValidator,
+  SessionListComponent,
+  UpvoteComponent,
+  VoterService
+} from './events/index';
+import { NavBarComponent } from './nav/navbar.component';
+import { appRoutes } from './routes';
+import { AuthService } from './user/auth.service';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];

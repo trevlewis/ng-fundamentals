@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { IUser } from './user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { IUser } from './user.model';
 
 @Injectable()
 export class AuthService {
